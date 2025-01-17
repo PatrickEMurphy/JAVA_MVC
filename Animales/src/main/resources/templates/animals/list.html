@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Lista de Animales</h1>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Esperanza de Vida</th>
+                <th>¿Extinto?</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Ejemplo de fila, reemplazar dinámicamente -->
+            <tr>
+                <td>1</td>
+                <td>Tigre</td>
+                <td>15</td>
+                <td>No</td>
+                <td>
+                    <a href="/details/1" class="btn btn-info btn-sm me-1">Details</a>
+                    <a href="/edit/1" class="btn btn-warning btn-sm me-1">Edit</a>
+                    <a href="/delete/1" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Dodo</td>
+                <td>30</td>
+                <td>Sí</td>
+                <td>
+                    <a href="/details/2" class="btn btn-info btn-sm me-1">Details</a>
+                    <a href="/edit/2" class="btn btn-warning btn-sm me-1">Edit</a>
+                    <a href="/delete/2" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            <!-- Fin de ejemplo -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer th:replace="~{fragments/footer::footer}"></footer>
+</body>
+</html>
