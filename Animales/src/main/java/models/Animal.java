@@ -1,21 +1,30 @@
 package models;
 
+import jakarta.validation.constraints.*;
+
 public class Animal {
     private int id;
+
+    @NotEmpty(message = "El nombre no puede estar vacío")
+    @Size(min = 2, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres")
     private String name;
-    private int LifeSpan;
-    private Boolean Extinct;
+
+    @Min(value = 1, message = "La esperanza de vida debe ser al menos 1 año")
+    @Max(value = 100, message = "La esperanza de vida no puede superar 100 años")
+    private int lifeSpan;
+
+    private Boolean extinct;
 
     public Animal() {}
 
     public Animal(int id, String name, int lifeSpan, Boolean extinct) {
         this.id = id;
         this.name = name;
-        LifeSpan = lifeSpan;
-        Extinct = extinct;
+        this.lifeSpan = lifeSpan;
+        this.extinct = extinct;
     }
 
-    // Getters and setters
+    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -33,30 +42,28 @@ public class Animal {
     }
 
     public int getLifeSpan() {
-        return LifeSpan;
+        return lifeSpan;
     }
 
     public void setLifeSpan(int lifeSpan) {
-        LifeSpan = lifeSpan;
+        this.lifeSpan = lifeSpan;
     }
 
     public Boolean getExtinct() {
-        return Extinct;
+        return extinct;
     }
 
     public void setExtinct(Boolean extinct) {
-        Extinct = extinct;
+        this.extinct = extinct;
     }
-
-    // ToString
 
     @Override
     public String toString() {
         return "Animal{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", LifeSpan=" + LifeSpan +
-                ", Extinct=" + Extinct +
+                ", lifeSpan=" + lifeSpan +
+                ", extinct=" + extinct +
                 '}';
     }
 }

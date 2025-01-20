@@ -2,10 +2,32 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head::head}"></head>
 <body>
-    <header th:replace="~{fragments/header::header}"></header>
-    <h1>Listado de animales</h1>
-    <a href=""></a>
-
-    <footer th:replace="~{fragments/footer::footer}"></footer>
+<header th:replace="~{fragments/header::header}"></header>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Editar Animal</h2>
+    <form th:action="@{/animals/edit/{id}(id=${animal.id})}" th:object="${animal}" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="lifeSpan" class="form-label">Esperanza de Vida</label>
+            <input type="number" id="lifeSpan" th:field="*{lifeSpan}" class="form-control" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('lifeSpan')}" th:errors="*{lifeSpan}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="extinct" class="form-label">¿Extinto?</label>
+            <select id="extinct" th:field="*{extinct}" class="form-select">
+                <option th:value="true" th:text="'Sí'"></option>
+                <option th:value="false" th:text="'No'"></option>
+            </select>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a th:href="@{/animals/list}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</main>
 </body>
 </html>

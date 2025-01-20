@@ -3,31 +3,39 @@ package services;
 import models.Animal;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnimalService {
-    private List<Animal> Animals;
+    private List<Animal> animals = new ArrayList<>();
+    private int currentId = 1;
 
-    public Animal List(){
-        return new Animal();
+    public List<Animal> list() {
+        return animals;
     }
 
-    public Animal GetAnimal(int id){
-        return new Animal();
+    public Optional<Animal> getAnimal(int id) {
+        return animals.stream().filter(a -> a.getId() == id).findFirst();
     }
 
-    public Animal AddAnimal(Animal animal){
-        return new Animal();
+    public Animal addAnimal(Animal animal) {
+        animal.setId(currentId++);
+        animals.add(animal);
+        return animal;
     }
 
-    public Animal UpdateAnimal(int id, Animal animal){
-        return new Animal();
+    public Animal updateAnimal(int id, Animal updatedAnimal) {
+        return getAnimal(id).map(animal -> {
+            animal.setName(updatedAnimal.getName());
+            animal.setLifeSpan(updatedAnimal.getLifeSpan());
+            animal.setExtinct(updatedAnimal.getExtinct());
+            return animal;
+        }).orElse(null);
     }
 
-    public Animal DeleteAnimal(int id){
-        return new Animal();
+    public boolean deleteAnimal(int id) {
+        return animals.removeIf(animal -> animal.getId() == id);
     }
 }
-
-

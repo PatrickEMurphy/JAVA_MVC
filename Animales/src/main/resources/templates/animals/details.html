@@ -2,10 +2,30 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head::head}"></head>
 <body>
-    <header th:replace="~{fragments/header::header}"></header>
-    <h1>Listado de animales</h1>
-    <a href=""></a>
-
-    <footer th:replace="~{fragments/footer::footer}"></footer>
+<header th:replace="~{fragments/header::header}"></header>
+<main class="container mt-5">
+    <h2 class="text-center mb-4">Detalles del Animal</h2>
+    <table class="table">
+        <tr>
+            <th>ID:</th>
+            <td th:text="${animal.id}"></td>
+        </tr>
+        <tr>
+            <th>Nombre:</th>
+            <td th:text="${animal.name}"></td>
+        </tr>
+        <tr>
+            <th>Esperanza de Vida:</th>
+            <td th:text="${animal.lifeSpan}"></td>
+        </tr>
+        <tr>
+            <th>Extinto:</th>
+            <td th:text="${animal.extinct} ? 'Sí' : 'No'"></td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/animals/list}" class="btn btn-secondary">Volver</a>
+    </div>
+</main>
 </body>
 </html>
