@@ -1,5 +1,17 @@
 package DAW.AnimalPersist.interfaces;
 
-public class AnimalServiceInterface {
+import DAW.AnimalPersist.models.Animal;
 
+import java.util.List;
+import java.util.Optional;
+
+public interface AnimalServiceInterface {
+
+    Optional<Animal> getAnimal(int id);
+
+    Animal addAnimal(Animal animal);
+
+    Animal updateAnimal(int id, Animal updatedAnimal);
+
+    boolean deleteAnimal(int id);
 }
