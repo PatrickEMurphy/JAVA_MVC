@@ -15,7 +15,7 @@ public class AnimalServiceMem implements AnimalServiceInterface {
     private List<Animal> animals = new ArrayList<>();
     private int currentId = 1;
 
-    public List<Animal> list() {
+    public List<Animal> getAnimals() {
         return animals;
     }
 

@@ -18,6 +18,11 @@ public class AnimalServiceDB implements AnimalServiceInterface {
     private AnimalRepository ar;
 
     @Override
+    public List<Animal> getAnimals() {
+        return ar.findAll();
+    }
+
+    @Override
     public Optional<Animal> getAnimal(int id) {
         return ar.findById(id);
     }

@@ -1,7 +1,9 @@
 package DAW.AnimalPersist.models;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+
 
 @Entity
 @Table(name = "animals")

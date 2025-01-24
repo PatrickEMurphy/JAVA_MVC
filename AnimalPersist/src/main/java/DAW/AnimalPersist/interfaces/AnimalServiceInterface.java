@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface AnimalServiceInterface {
 
+    List<Animal> getAnimals();
+
     Optional<Animal> getAnimal(int id);
 
     Animal addAnimal(Animal animal);
