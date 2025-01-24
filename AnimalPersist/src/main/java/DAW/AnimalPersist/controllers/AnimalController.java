@@ -1,6 +1,7 @@
 package DAW.AnimalPersist.controllers;
 
 import DAW.AnimalPersist.models.Animal;
+import DAW.AnimalPersist.services.AnimalServiceDB;
 import DAW.AnimalPersist.services.AnimalServiceMem;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/animals")
 public class AnimalController {
     @Autowired
-    private AnimalServiceMem animalService;
+    private AnimalServiceDB animalService;
 
     // Listar animales
     @GetMapping("/list")

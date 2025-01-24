@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-primary" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Animalia</a>
+  </div>
+</nav>
+<main>
+  <div class="container">
+    <h1>Crear Nuevo Animal</h1>
+
+    <form action="#"
+          th:action="@{/animals/create}"
+          th:object="${animal}"
+          method="post">
+      <div class="mb-3">
+        <label for="animalName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="animalName" th:field="*{Nombre}">
+        <div th:if="${#fields.hasErrors('Nombre')}" th:errors="*{Nombre}" class="text-danger">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="animalAge" class="form-label">Vida Media</label>
+        <input type="number" class="form-control" id="animalAge" th:field="*{VidaMedia}">
+        <div th:if="${#fields.hasErrors('VidaMedia')}" th:errors="*{VidaMedia}" class="text-danger">
+        </div>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="animalExtint" th:field="*{Extinto}">
+        <label class="form-check-label" for="animalExtint">Marcar si está extinto</label>
+        <div th:if="${#fields.hasErrors('Extinto')}" th:errors="*{Extinto}" class="text-danger">
+        </div>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Crear">
+    </form>
+
+    <a href="/animals">Volver al listado</a>
+  </div>
+</main>
+</body>
+</html>
